@@ -20,5 +20,5 @@ const mapActionsToProps = dispatch => {
 
 export default connect(
   null,
-  mapActionsToProps
+  { deleteTodo }
 )(Todo);

@@ -31,7 +31,7 @@ class App extends Component {
         {this.props.title}
         <h3>Number of todos:{this.props.todos.length}</h3>
         <AddTodo />
-        <TodoList todos = {this.props.todos}/>
+        <TodoList todos={this.props.todos} />
         <h1>WELCOME TO REACT REDUX</h1>
         <h1>Count:{this.props.count}</h1>
         <h2>Name:{this.props.name}</h2>
@@ -39,7 +39,9 @@ class App extends Component {
 
         <button onClick={this.props.addOne}>Add One</button>
         <button onClick={this.props.minusOne}>Minus One</button>
-        <button onClick={this.props.changeName}>Change Name</button>
+        <button onClick={() => this.props.changeName('David')}>
+          Change Name
+        </button>
       </div>
     );
   }
@@ -55,14 +57,14 @@ const mapStateToProps = (state, ownProps) => {
     title: `${ownProps.title} is a title`
   };
 };
-const mapActionsToProps = dispatch => {
-  return {
-    addOne: () => dispatch(addOne()),
-    minusOne: () => dispatch(minusOne()),
-    changeName: () => dispatch(changeName('David'))
-  };
-};
+// const mapActionsToProps = dispatch => {
+//   return {
+//     addOne: () => dispatch(addOne()),
+//     minusOne: () => dispatch(minusOne()),
+//     changeName: () => dispatch(changeName('David'))
+//   };
+// };
 export default connect(
   mapStateToProps,
-  mapActionsToProps
+  { addOne, minusOne, changeName }
 )(App);
